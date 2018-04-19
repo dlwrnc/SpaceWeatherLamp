@@ -15,4 +15,5 @@ In that case, just implement the proton density calls similarly to how the bulk 
 This project uses:
 1. An Adafruit Feather HUZZAH ESP8266. (Should be able to work with any ESP8266 with the right drivers.)
 2. Three diffused 10mm RGB LEDs. (Again, any RGB LEDs should work.)
-3. All the necessary wires and 9 resistors. 
+3. All the necessary wires.
+4. 9 resistors, three for each LED. 
