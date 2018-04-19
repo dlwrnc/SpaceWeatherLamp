@@ -1,5 +1,5 @@
 # SpaceWeatherLamp
-Basic code for 3-LED lamp that reads in live data from the ACE Satellite and outputs it to the three LEDs. 
+Basic code for 3-LED lamp that reads in live data from the ACE Satellite and outputs it to the LEDs. 
 LEDs can subsequently be manipulated to produce a more visually appealing lamp.
 
 This project reads in three basic pieces of information from the NOAA live feed of the ACE satellite:
