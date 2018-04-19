@@ -1,7 +1,8 @@
 #include <ESP8266WiFi.h>
 
-const char* ssid     = "MYWIFINETWORK";
-const char* password = "MYWIFIPASSWORD";
+//Please replace with your wifi network and password. 
+const char* ssid     = "MY_WIFI_NETWORK";
+const char* password = "MY_WIFI_PASSWORD";
 
 const char* host = "services.swpc.noaa.gov";
 
@@ -15,7 +16,7 @@ const int BLUEPIN1 = 0;
 const int GREENPIN1 = 16;
 const int REDPIN1 = 2;
 
-//TEMPERATURE PINS 
+//ION TEMPERATURE PINS
 const int BLUEPIN2 = 14;
 const int GREENPIN2 = 5;
 const int REDPIN2 = 4;
@@ -109,10 +110,9 @@ void loop() {
   if (statusInt != 0) {
     badData();
   } else {
-    //Serial.println(SPEEDMULT);
-    //Serial.println(DENSMULT);
-    //Serial.println(TEMPMULT);
-
+    /**
+     * Write the corresponding colors to LED 0 for the Bulk Speed.
+     */
     int blueVal = getBlueVal(bulkSpeed - 200, SPEEDMULT);
     int greenVal = getGreenVal(bulkSpeed - 200, SPEEDMULT);
     int redVal = getRedVal(bulkSpeed - 200, SPEEDMULT);
@@ -126,6 +126,9 @@ void loop() {
     analogWrite(GREENPIN, greenVal);
     analogWrite(REDPIN, redVal);
 
+    /**
+     * Write the corresponding colors to LED 2 for ion temperature. 
+     */
     int blueVal2 = getBlueVal(ionTempTrue - 100, TEMPMULT);
     int greenVal2 = getGreenVal(ionTempTrue - 100, TEMPMULT);
     int redVal2 = getRedVal(ionTempTrue - 100, TEMPMULT);
@@ -139,10 +142,11 @@ void loop() {
     analogWrite(GREENPIN2, greenVal2);
     analogWrite(REDPIN2, redVal2);
 
+    /**
+     * Begin the color cycling for the proton density. 
+     */
     rainbow(protDensity);
 
-    //delay(30000);
-    //delay(30000);
   }//else if its working
 }//loop
 
@@ -198,7 +202,7 @@ int getIonTempPower(String orig) {
 }
 
 
-int getGreenVal(int num, float mult) { //0-167 exclusive
+int getGreenVal(int num, float mult) { 
   int greenVal = 0;
   int newnum = mult * num;
   Serial.print("greenvalmethod ");
@@ -213,7 +217,7 @@ int getGreenVal(int num, float mult) { //0-167 exclusive
 }//getGreenVal1
 
 
-int getBlueVal(int num, float mult) { //167 - 355 exclusive
+int getBlueVal(int num, float mult) { 
   int blueVal = 0;
   int newnum = mult * num;
   Serial.print("bluevalmethod ");
@@ -225,7 +229,7 @@ int getBlueVal(int num, float mult) { //167 - 355 exclusive
 }//getBlueVal1
 
 
-int getRedVal(int num, float mult) { //356 - 510 inclusive
+int getRedVal(int num, float mult) {
   int redVal = 0;
   int newnum = mult * num;
   Serial.print("redvalmethod ");
