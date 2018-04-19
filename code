@@ -39,7 +39,7 @@ void setup() {
   Serial.begin(115200);
   delay(100);
 
-  // We start by connecting to a WiFi network
+  // connect to wifi network
 
   Serial.println();
   Serial.println();
@@ -74,12 +74,12 @@ void loop() {
     return;
   }
 
-  // We now create a URI for the request
+  // create URI for request
   String url = "/text/ace-swepam.txt";
   Serial.print("Requesting URL: ");
   Serial.println(url);
 
-  // This will send the request to the server
+  // send request
   client.print(String("GET ") + url + " HTTP/1.1\r\n" +
                "Host: " + host + "\r\n" +
                "Connection: close\r\n\r\n");
@@ -87,7 +87,7 @@ void loop() {
   delay(500);
   int num =  0;
   String trueLine = "";
-  // Read all the lines of the reply from server and print them to Serial
+  // print to serial 
   while (client.available()) {
     String line = client.readStringUntil('\n');
     num++;
