@@ -36,7 +36,9 @@ This project uses:
 
 IMPORTANT: When using this code, please be sure to change the wifi network name and password in order to correspond to your own wifi network and password. 
 You will also need to go here: https://aqicn.org/data-platform/token/
+
 And request your own token. Then put your token in for the 'token' variable.
+
 Finally, enter your city for the 'city' variable. Not all cities are available by name alone, so make sure to check the API.
 
 Feel free to change the request frequency to anything up to 1000req/second. It currently queries once per minute. However, there isn't much of a point to changing it to more than once per minute-- the AQI doesn't change that quickly, and the AQI detection stations don't update that quickly either. 
