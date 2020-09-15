@@ -83,40 +83,64 @@ int GetAqi() {
   http.end();
 }
 
+
+int calculate_red(int aqi) {
+  int red = (aqi - 100) * 2.5;
+  if (red <= 255) {
+    if(red <= 0){
+      return 0;
+    }
+    return red;
+  }
+  return 255;
+}
+
+int calculate_green(int aqi) {
+  int green = 0;
+  if (aqi <= 200) {
+    green = aqi * 1.2;
+  } else {
+    green = (200 - (aqi - 200)) * 1.2;
+  }
+  if (green <= 255) {
+    if (green < 0) {
+      return 0;
+    }
+    return green;
+  }
+  return 255;
+}
+
+int calculate_blue(int aqi) {
+  int blue = (100 - aqi) * 2.5;
+  if (blue <= 255) {
+    if(blue <= 0){
+      return 0;
+    }
+    return blue;
+  }
+  return 255;
+}
+
 void loop()
 {
   int aqi = GetAqi();
   Serial.println(aqi);
 
-  if(aqi < 50){
-    analogWrite(REDPIN, 0);
-    analogWrite(GREENPIN, 0);
-    analogWrite(BLUEPIN, 255);
-  }
-  else if(aqi < 100){
-    analogWrite(REDPIN, 0);
-    analogWrite(GREENPIN, 255);
-    analogWrite(BLUEPIN, 0);
-  }
-  else if(aqi < 200){
-    analogWrite(REDPIN, 255);
-    analogWrite(GREENPIN, 215);
-    analogWrite(BLUEPIN, 0);
-  }
-  else if(aqi < 250){
-    analogWrite(REDPIN, 255);
-    analogWrite(GREENPIN, 70);
-    analogWrite(BLUEPIN, 0);
-  }
-  else if(aqi < 300){
-    analogWrite(REDPIN, 255);
-    analogWrite(GREENPIN, 0);
-    analogWrite(BLUEPIN, 0);
-  }
-  else{
-    analogWrite(REDPIN, 255);
-    analogWrite(GREENPIN, 255);
-    analogWrite(BLUEPIN, 255);
-  }
-  delay(60 * 60 * 5);
+  int r = calculate_red(aqi);
+  int g = calculate_green(aqi);
+  int b = calculate_blue(aqi);
+
+  Serial.print("RED: ");
+  Serial.println(r);
+  Serial.print("GREEN: ");
+  Serial.println(g);
+  Serial.print("BLUE: ");
+  Serial.println(b);
+
+
+  analogWrite(REDPIN, r);
+  analogWrite(GREENPIN, g);
+  analogWrite(BLUEPIN, b);
+  delay(1000 * 60 * 1); // poll every minute
 }
