@@ -142,5 +142,5 @@ void loop()
   analogWrite(REDPIN, r);
   analogWrite(GREENPIN, g);
   analogWrite(BLUEPIN, b);
-  delay(1000 * 60 * 1); // poll every minute
+  delay(1000 * 60); // poll every minute
 }
