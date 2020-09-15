@@ -14,8 +14,8 @@ const int GREENPIN = 12;
 const int REDPIN = 14;
 const int BLUEPIN = 13;
 const String token = "YOUR_TOKEN";
-const String host = "http://api.waqi.info/feed/kirkland/?token=";
-
+const String city = "YOUR_CITY";
+const String host = "http://api.waqi.info/feed/" + city + "/?token=";
 
 void setup()
 {
