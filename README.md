@@ -16,7 +16,7 @@ This project uses:
 1. An Adafruit Feather HUZZAH ESP8266. (Should be able to work with any ESP8266 with the right drivers.)
 2. Three diffused 10mm RGB LEDs. (Again, any RGB LEDs should work.)
 3. All the necessary wires.
-4. 9 resistors, three for each LED. 
+4. All the necessary resistors, depending on what LEDs you're using. 
 
 IMPORTANT: When using this code, please be sure to change the wifi network name and password in order to correspond to your own wifi network and password. 
 
@@ -32,7 +32,7 @@ This project uses:
 1. An Adafruit Feather HUZZAH ESP8266. (Should be able to work with any ESP8266 with the right drivers.)
 2. One diffused 10mm RGB LED. (Again, any RGB LEDs should work.)
 3. All the necessary wires.
-4. 3 resistors, three for each LED. 
+4. All the necessary resistors, depending on what LEDs you're using. 
 
 IMPORTANT: When using this code, please be sure to change the wifi network name and password in order to correspond to your own wifi network and password. 
 You will also need to go here: https://aqicn.org/data-platform/token/ and request your own token. Then put your token in for the 'token' variable.
